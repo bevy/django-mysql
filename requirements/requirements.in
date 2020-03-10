@@ -1,0 +1,24 @@
+black ; python_version == '3.8.*'
+check-manifest ; python_version == '3.8.*'
+coverage
+django
+docutils
+flake8
+flake8-bugbear
+flake8-comprehensions
+flake8-tidy-imports
+isort
+mariadb-dyncol
+multilint
+mysqlclient
+parameterized
+pygments
+pytest
+pytest-django
+pytest-flake8dir
+pytest-randomly
+pytest-super-check
+pytz
+secretstorage # required for twine on linux
+sqlparse
+twine

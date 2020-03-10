@@ -1,15 +1,10 @@
-# -*- coding:utf-8 -*-
-from __future__ import (
-    absolute_import, division, print_function, unicode_literals
-)
-
 import json
 
 from django.core import serializers
 from django.db.models import F
 from django.test import SimpleTestCase, TestCase
 
-from testapp.models import Bit1Model, NullBit1Model
+from tests.testapp.models import Bit1Model, NullBit1Model
 
 
 class TestSaveLoad(TestCase):
@@ -52,8 +47,8 @@ class TestSaveLoad(TestCase):
         assert list(Bit1Model.objects.filter(flag_a=True)) == [m]
         assert list(Bit1Model.objects.filter(flag_a=False)) == []
 
-        assert list(Bit1Model.objects.filter(flag_a=F('flag_b'))) == [m]
-        assert list(Bit1Model.objects.exclude(flag_a=F('flag_b'))) == []
+        assert list(Bit1Model.objects.filter(flag_a=F("flag_b"))) == [m]
+        assert list(Bit1Model.objects.exclude(flag_a=F("flag_b"))) == []
 
         m.flag_a = False
         m.save()
@@ -61,8 +56,8 @@ class TestSaveLoad(TestCase):
         assert list(Bit1Model.objects.filter(flag_a=True)) == []
         assert list(Bit1Model.objects.filter(flag_a=False)) == [m]
 
-        assert list(Bit1Model.objects.filter(flag_a=F('flag_b'))) == []
-        assert list(Bit1Model.objects.exclude(flag_a=F('flag_b'))) == [m]
+        assert list(Bit1Model.objects.filter(flag_a=F("flag_b"))) == []
+        assert list(Bit1Model.objects.exclude(flag_a=F("flag_b"))) == [m]
 
         Bit1Model.objects.filter(flag_a=False).update(flag_a=True)
         assert list(Bit1Model.objects.filter(flag_a=True)) == [m]
@@ -74,20 +69,19 @@ class TestSaveLoad(TestCase):
 
 
 class TestSerialization(SimpleTestCase):
-
     def test_dumping(self):
         instance = Bit1Model(flag_a=True, flag_b=False)
-        data = json.loads(serializers.serialize('json', [instance]))[0]
-        fields = data['fields']
-        assert fields['flag_a']
-        assert not fields['flag_b']
+        data = json.loads(serializers.serialize("json", [instance]))[0]
+        fields = data["fields"]
+        assert fields["flag_a"]
+        assert not fields["flag_b"]
 
     def test_loading(self):
-        test_data = '''
+        test_data = """
             [{"fields": {"flag_a": false, "flag_b": true},
               "model": "testapp.Bit1Model", "pk": null}]
-        '''
-        objs = list(serializers.deserialize('json', test_data))
+        """
+        objs = list(serializers.deserialize("json", test_data))
         assert len(objs) == 1
         instance = objs[0].object
         assert not instance.flag_a
@@ -160,19 +154,18 @@ class TestNullSaveLoad(TestCase):
 
 
 class TestNullSerialization(SimpleTestCase):
-
     def test_dumping(self):
         instance = NullBit1Model(flag=None)
-        data = json.loads(serializers.serialize('json', [instance]))[0]
-        fields = data['fields']
-        assert fields['flag'] is None
+        data = json.loads(serializers.serialize("json", [instance]))[0]
+        fields = data["fields"]
+        assert fields["flag"] is None
 
     def test_loading(self):
-        test_data = '''
+        test_data = """
             [{"fields": {"flag": null},
               "model": "testapp.NullBit1Model", "pk": null}]
-        '''
-        objs = list(serializers.deserialize('json', test_data))
+        """
+        objs = list(serializers.deserialize("json", test_data))
         assert len(objs) == 1
         instance = objs[0].object
         assert instance.flag is None

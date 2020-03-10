@@ -36,8 +36,8 @@ The following can be imported from ``django_mysql.locks``.
 
     For more information on user locks refer to the ``GET_LOCK`` documentation
     on `MySQL
-    <https://dev.mysql.com/doc/refman/5.6/en/miscellaneous-functions.html#function_get-lock>`_
-    or `MariaDB <https://mariadb.com/kb/en/mariadb/get_lock/>`_.
+    <https://dev.mysql.com/doc/refman/5.6/en/miscellaneous-functions.html#function_get-lock>`__
+    or `MariaDB <https://mariadb.com/kb/en/mariadb/get_lock/>`__.
 
     .. warning::
 
@@ -135,9 +135,6 @@ The following can be imported from ``django_mysql.locks``.
             so:
 
             .. code-block:: python
-
-                # -*- coding: utf-8 -*-
-                from __future__ import unicode_literals
 
                 from django.db import migrations
                 from django_mysql.operations import InstallSOName

@@ -1,46 +1,33 @@
-#!/bin/bash -e
+#!/bin/bash
 
-# percona-toolkit - have to use non-apt version since Travis' ubuntu 12.04 repo
-# is way out of date
-sudo apt-get update -qq
-sudo apt-get install -y libio-socket-ssl-perl
-wget https://www.percona.com/downloads/percona-toolkit/2.2.13/deb/percona-toolkit_2.2.13_all.deb
-sudo dpkg -i percona-toolkit_2.2.13_all.deb
+set -e
+set -x
 
-# MySQL
+# DB
 
 if [[ $DB == 'mysql' ]]
 then
-  if [[ $DB_VERSION == '5.5' ]]
-  then
-    # Travis default
-    sudo service mysql restart
-  else
-    # Nuke default
-    sudo apt-get -y purge mysql-server
-    sudo apt-get -y autoremove --purge
-    sudo rm -rf /var/lib/mysql
-    # Install new
-    echo "deb http://repo.mysql.com/apt/ubuntu/ precise mysql-$DB_VERSION" | sudo tee /etc/apt/sources.list.d/mysql.list >/dev/null
-    echo "deb-src http://repo.mysql.com/apt/ubuntu/ precise mysql-$DB_VERSION" | sudo tee -a /etc/apt/sources.list.d/mysql.list >/dev/null
-    sudo apt-get update
-    yes Y | sudo DEBIAN_FRONTEND=noninteractive apt-get -y --force-yes install mysql-server
-  fi
-
+    DOCKER_IMAGE="mysql:$DB_VERSION"
 elif [[ $DB == 'mariadb' ]]
 then
-  # Nuke default
-  sudo apt-get -y purge mysql-server
-  sudo apt-get -y autoremove --purge
-  sudo rm -rf /var/lib/mysql /etc/mysql
-  # Install
-  sudo apt-get install -y python-software-properties
-  sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xcbcb082a1bb943db
-  sudo add-apt-repository "deb http://ftp.osuosl.org/pub/mariadb/repo/$DB_VERSION/ubuntu precise main"
-  sudo apt-get update -qq
-  yes Y | sudo DEBIAN_FRONTEND=noninteractive apt-get install -y mariadb-server libmariadbclient-dev
+    DOCKER_IMAGE="mariadb:$DB_VERSION"
+else
+    echo "unknown DB $DB"
+    exit 1
 fi
 
-sudo mysql -u root -e "create user travis@localhost identified by '';" || true
+docker pull "$DOCKER_IMAGE"
+docker run --name mysql --env MYSQL_ALLOW_EMPTY_PASSWORD=true --env 'MYSQL_ROOT_HOST=%' -p 3306:3306 -d "$DOCKER_IMAGE"
+set +x
+until mysql -u root --protocol=TCP -e 'select 1'; do
+    sleep 1
+done
+set -x
+mysql -u root --protocol=TCP -e "
+SET GLOBAL binlog_format=MIXED;
+CREATE USER travis@'%' IDENTIFIED BY '';
+GRANT ALL PRIVILEGES ON *.* TO travis@'%';"
 
-sudo mysql -u root -e 'grant all privileges on *.* to travis@localhost;'
+# Install Percona default
+sudo apt-get update -qq
+sudo apt-get install -y percona-toolkit

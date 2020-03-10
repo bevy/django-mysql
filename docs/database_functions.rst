@@ -32,8 +32,8 @@ Comparison Functions
     With two or more arguments, returns the largest (maximum-valued) argument.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/comparison-operators.html#function_greatest>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/greatest/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/comparison-operators.html#function_greatest>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/greatest/>`__.
 
     Usage example:
 
@@ -53,8 +53,8 @@ Comparison Functions
     With two or more arguments, returns the smallest (minimum-valued) argument.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/comparison-operators.html#function_least>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/least/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/comparison-operators.html#function_least>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/least/>`__.
 
     Usage example:
 
@@ -64,7 +64,7 @@ Comparison Functions
 
 
 Control Flow Functions
---------------------
+----------------------
 
 
 .. class:: If(condition, true, false=None)
@@ -75,8 +75,8 @@ Control Flow Functions
     ``NULL``.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/control-flow-functions.html#function_if>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/if-function/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/control-flow-functions.html#function_if>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/if-function/>`__.
 
     Usage example:
 
@@ -100,8 +100,8 @@ Numeric Functions
     ``expression`` is not a number, it is converted to a numeric type.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_abs>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/abs/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_abs>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/abs/>`__.
 
     Usage example:
 
@@ -115,8 +115,8 @@ Numeric Functions
     Returns the smallest integer value not less than `expression`.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_ceiling>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/ceiling/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_ceiling>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/ceiling/>`__.
 
     Usage example:
 
@@ -132,8 +132,8 @@ Numeric Functions
     expected to be a string and (if possible) is treated as one if it is not.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_crc32>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/crc32/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_crc32>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/crc32/>`__.
 
     Usage example:
 
@@ -147,8 +147,8 @@ Numeric Functions
     Returns the largest integer value not greater than ``expression``.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_floor>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/floor/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_floor>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/floor/>`__.
 
     Usage example:
 
@@ -166,8 +166,8 @@ Numeric Functions
     become zero.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_round>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/round/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_round>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/round/>`__.
 
     Usage example:
 
@@ -182,8 +182,8 @@ Numeric Functions
     ``expression`` is negative, zero, or positive.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_sign>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/sign/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/mathematical-functions.html#function_sign>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/sign/>`__.
 
     Usage example:
 
@@ -210,8 +210,8 @@ String Functions
     field.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/string-functions.html#function_concat-ws>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/concat_ws/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/string-functions.html#function_concat-ws>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/concat_ws/>`__.
 
     Usage example:
 
@@ -234,8 +234,8 @@ String Functions
     column, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/string-functions.html#function_elt>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/elt/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/string-functions.html#function_elt>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/elt/>`__.
 
     Usage example:
 
@@ -261,8 +261,8 @@ String Functions
     use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/string-functions.html#function_field>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/field/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/string-functions.html#function_field>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/field/>`__.
 
     Usage example:
 
@@ -292,8 +292,8 @@ XML Functions
     to refer to columns, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/xml-functions.html#function_updatexml>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/updatexml/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/xml-functions.html#function_updatexml>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/updatexml/>`__.
 
     Usage example:
 
@@ -318,8 +318,8 @@ XML Functions
     want ``xpath_expr`` to refer to a column, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/xml-functions.html#function_extractvalue>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/extractvalue/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/xml-functions.html#function_extractvalue>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/extractvalue/>`__.
 
     Usage example:
 
@@ -351,7 +351,7 @@ Regexp Functions
     column, whilst if ``regex`` is a string, it will be used as a string. If
     you want ``regex`` to refer to a column, use Django's ``F()`` class.
 
-    Docs: `MariaDB <https://mariadb.com/kb/en/mariadb/regexp_instr/>`_.
+    Docs: `MariaDB <https://mariadb.com/kb/en/mariadb/regexp_instr/>`__.
 
     Usage example:
 
@@ -373,7 +373,7 @@ Regexp Functions
     used as strings. If you want ``regex`` or ``replace`` to refer to columns,
     use Django's ``F()`` class.
 
-    Docs: `MariaDB <https://mariadb.com/kb/en/mariadb/regexp_replace/>`_.
+    Docs: `MariaDB <https://mariadb.com/kb/en/mariadb/regexp_replace/>`__.
 
     Usage example:
 
@@ -400,7 +400,7 @@ Regexp Functions
     column, whilst if ``regex`` is a string, it will be used as a string. If
     you want ``regex`` to refer to a column, use Django's ``F()`` class.
 
-    Docs: `MariaDB <https://mariadb.com/kb/en/mariadb/regexp_substr/>`_.
+    Docs: `MariaDB <https://mariadb.com/kb/en/mariadb/regexp_substr/>`__.
 
     Usage example:
 
@@ -423,8 +423,8 @@ Encryption Functions
     Calculates an MD5 128-bit checksum for the string ``expression``.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_md5>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/md5/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_md5>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/md5/>`__.
 
     Usage example:
 
@@ -439,8 +439,8 @@ Encryption Functions
     described in RFC 3174 (Secure Hash Algorithm).
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_sha1>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/sha1/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_sha1>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/sha1/>`__.
 
     Usage example:
 
@@ -458,8 +458,8 @@ Encryption Functions
     The default for ``hash_len`` is 512.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_sha2>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/sha2/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/encryption-functions.html#function_sha2>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/sha2/>`__.
 
     Usage example:
 
@@ -497,8 +497,8 @@ Information Functions
             ``delete()`` with cascading.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/en/information-functions.html#function_last-insert-id>`_ /
-    `MariaDB <https://mariadb.com/kb/en/mariadb/last_insert_id/>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/en/information-functions.html#function_last-insert-id>`__ /
+    `MariaDB <https://mariadb.com/kb/en/mariadb/last_insert_id/>`__.
 
     Usage examples:
 
@@ -532,7 +532,7 @@ These functions use JSON paths to address content inside JSON documents - for
 more information on their syntax, refer to the MySQL documentation.
 
 
-.. class:: JSONExtract(expression, *paths)
+.. class:: JSONExtract(expression, *paths, output_field=None)
 
     Given ``expression`` that resolves to some JSON data, extract the given
     JSON paths. If there is a single path, the plain value is returned; if
@@ -540,13 +540,18 @@ more information on their syntax, refer to the MySQL documentation.
     values represented by the paths. If the expression does not match for a
     particular JSON object, returns ``NULL``.
 
+    If only one path is given, ``output_field`` may also be given as a model
+    field instance like ``IntegerField()``, into which Django will load the
+    value; the default is ``JSONField()``, as it supports all return types
+    including the array of values for multiple paths.
+
     Note that if ``expression`` is a string, it will refer to a field, whereas
     members of ``paths`` that are strings will be wrapped with ``Value``
     automatically and thus interpreted as the given string. If you want any of
     ``paths`` to refer to a field, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-search-functions.html#function_json-extract>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-search-functions.html#function_json-extract>`__.
 
     Usage examples:
 
@@ -578,7 +583,7 @@ more information on their syntax, refer to the MySQL documentation.
     field, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-search-functions.html#function_json-keys>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-search-functions.html#function_json-keys>`__.
 
     .. code-block:: pycon
 
@@ -615,7 +620,7 @@ more information on their syntax, refer to the MySQL documentation.
     field, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-attribute-functions.html#function_json-length>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-attribute-functions.html#function_json-length>`__.
 
     .. code-block:: pycon
 
@@ -640,7 +645,7 @@ more information on their syntax, refer to the MySQL documentation.
     want a key or value to refer to a field, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-insert>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-insert>`__.
 
     .. code-block:: pycon
 
@@ -664,7 +669,7 @@ more information on their syntax, refer to the MySQL documentation.
     want a key or value to refer to a field, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-replace>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-replace>`__.
 
     .. code-block:: pycon
 
@@ -672,6 +677,7 @@ more information on their syntax, refer to the MySQL documentation.
         >>> ShopItem.objects.update(
         ...     attrs=JSONReplace('attrs', {'$.monthly_sales': 0})
         ... )
+
 
 .. class:: JSONSet(expression, data)
 
@@ -687,7 +693,7 @@ more information on their syntax, refer to the MySQL documentation.
     want a key or value to refer to a field, use Django's ``F()`` class.
 
     Docs:
-    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-set>`_.
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-set>`__.
 
     .. code-block:: pycon
 
@@ -695,6 +701,33 @@ more information on their syntax, refer to the MySQL documentation.
         >>> shop_item = ShopItem.objects.latest()
         >>> shop_item.attrs = JSONSet('attrs', {'$.size': '10m'})
         >>> shop_item.save()
+
+
+.. class:: JSONArrayAppend(expression, data)
+
+    Given ``expression`` that resolves to some JSON data, adds to it using the
+    dictionary ``data`` of JSON paths to new values. If a path selects an
+    array, the new value will be appended to it. On the other hand, if a path
+    selects a scalar or object value, that value is autowrapped within an array
+    and the new value is added to that array. If any of the JSON paths within
+    the data dictionary does not match, or if ``expression`` is ``NULL``, it
+    returns ``NULL``.
+
+    Note that if ``expression`` is a string, it will refer to a field, whereas
+    keys and values within the ``data`` dictionary will be wrapped with
+    ``Value`` automatically and thus interpreted as the given string. If you
+    want a key or value to refer to a field, use Django's ``F()`` class.
+
+    Docs:
+    `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-modification-functions.html#function_json-array-append>`__.
+
+    .. code-block:: pycon
+
+        >>> # Append the string '10m' to the array 'sizes' directly in MySQL
+        >>> shop_item = ShopItem.objects.latest()
+        >>> shop_item.attrs = JSONArrayAppend('attrs', {'$.sizes': '10m'})
+        >>> shop_item.save()
+
 
 Dynamic Columns Functions
 -------------------------
@@ -726,7 +759,7 @@ These are MariaDB 10.0+ only, and for use with ``DynamicField``.
     examples below.
 
     Docs:
-    `MariaDB <https://mariadb.com/kb/en/mariadb/column_add/>`_.
+    `MariaDB <https://mariadb.com/kb/en/mariadb/column_add/>`__.
 
     Usage examples:
 
@@ -755,7 +788,7 @@ These are MariaDB 10.0+ only, and for use with ``DynamicField``.
     column". If you do mean that, use ``F('fieldname')``.
 
     Docs:
-    `MariaDB <https://mariadb.com/kb/en/mariadb/column_delete/>`_.
+    `MariaDB <https://mariadb.com/kb/en/mariadb/column_delete/>`__.
 
     Usage examples:
 
@@ -777,7 +810,7 @@ These are MariaDB 10.0+ only, and for use with ``DynamicField``.
     documented for the ``DynamicField`` lookups.
 
     Docs:
-    `MariaDB <https://mariadb.com/kb/en/mariadb/column_get/>`_.
+    `MariaDB <https://mariadb.com/kb/en/mariadb/column_get/>`__.
 
     Usage examples:
 

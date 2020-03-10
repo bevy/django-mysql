@@ -1,23 +1,32 @@
-# -*- coding:utf-8 -*-
-from __future__ import (
-    absolute_import, division, print_function, unicode_literals
-)
-
 import json
 from datetime import date, datetime, time
 
 from django.db import connection
-from django.db.models import Model as VanillaModel
 from django.db.models import (
-    CharField, DateTimeField, DecimalField, ForeignKey, IntegerField,
-    OneToOneField, TextField
+    CASCADE,
+    CharField,
+    DateTimeField,
+    DecimalField,
+    ForeignKey,
+    IntegerField,
 )
-from django.utils import six, timezone
+from django.db.models import Model as VanillaModel
+from django.db.models import OneToOneField, TextField
+from django.utils import timezone
 
 from django_mysql.models import (
-    Bit1BooleanField, DynamicField, EnumField, JSONField, ListCharField,
-    ListTextField, Model, NullBit1BooleanField, SetCharField, SetTextField,
-    SizedBinaryField, SizedTextField
+    Bit1BooleanField,
+    DynamicField,
+    EnumField,
+    JSONField,
+    ListCharField,
+    ListTextField,
+    Model,
+    NullBit1BooleanField,
+    SetCharField,
+    SetTextField,
+    SizedBinaryField,
+    SizedTextField,
 )
 from django_mysql.utils import connection_is_mariadb
 
@@ -28,13 +37,14 @@ class TemporaryModel(Model):
     disabled unless an extra parameter is provided, in case the checks get run
     during tests, e.g. from call_command.
     """
+
     class Meta:
-        app_label = 'testapp'
+        app_label = "testapp"
         abstract = True
 
     @classmethod
     def check(cls, **kwargs):
-        actually_check = kwargs.pop('actually_check', False)
+        actually_check = kwargs.pop("actually_check", False)
         if actually_check:
             return super(TemporaryModel, cls).check(**kwargs)
         else:
@@ -42,42 +52,31 @@ class TemporaryModel(Model):
 
 
 class EnumModel(Model):
-    field = EnumField(choices=[
-        ('red', 'Red'),
-        ('bloodred', 'Blood Red'),
-        'green',
-        ('blue', 'Navy Blue'),
-        ('coralblue', 'Coral Blue'),
-    ])
+    field = EnumField(
+        choices=[
+            ("red", "Red"),
+            ("bloodred", "Blood Red"),
+            "green",
+            ("blue", "Navy Blue"),
+            ("coralblue", "Coral Blue"),
+        ]
+    )
 
 
 class NullableEnumModel(Model):
-    field = EnumField(choices=[
-        'goat',
-        ('deer', 'Deer'),
-        'bull',
-        "dog's",   # Test if escaping works
-    ], null=True)
+    field = EnumField(
+        choices=["goat", ("deer", "Deer"), "bull", "dog's"],  # Test if escaping works
+        null=True,
+    )
 
 
 class CharSetModel(Model):
-    field = SetCharField(
-        base_field=CharField(max_length=8),
-        size=3,
-        max_length=32,
-    )
-    field2 = SetCharField(
-        base_field=CharField(max_length=8),
-        max_length=255
-    )
+    field = SetCharField(base_field=CharField(max_length=8), size=3, max_length=32)
+    field2 = SetCharField(base_field=CharField(max_length=8), max_length=255)
 
 
 class CharListModel(Model):
-    field = ListCharField(
-        base_field=CharField(max_length=8),
-        size=3,
-        max_length=32,
-    )
+    field = ListCharField(base_field=CharField(max_length=8), size=3, max_length=32)
 
 
 class IntSetModel(Model):
@@ -89,24 +88,25 @@ class IntListModel(Model):
 
 
 class CharSetDefaultModel(Model):
-    field = SetCharField(base_field=CharField(max_length=5),
-                         size=5,
-                         max_length=32,
-                         default=lambda: {"a", "d"})
+    field = SetCharField(
+        base_field=CharField(max_length=5),
+        size=5,
+        max_length=32,
+        default=lambda: {"a", "d"},
+    )
 
 
 class CharListDefaultModel(Model):
-    field = ListCharField(base_field=CharField(max_length=5),
-                          size=5,
-                          max_length=32,
-                          default=lambda: ["a", "d"])
+    field = ListCharField(
+        base_field=CharField(max_length=5),
+        size=5,
+        max_length=32,
+        default=lambda: ["a", "d"],
+    )
 
 
 class BigCharSetModel(Model):
-    field = SetTextField(
-        base_field=CharField(max_length=8),
-        max_length=32,
-    )
+    field = SetTextField(base_field=CharField(max_length=8), max_length=32)
 
 
 class BigCharListModel(Model):
@@ -124,15 +124,13 @@ class BigIntListModel(Model):
 class DynamicModel(Model):
     attrs = DynamicField(
         spec={
-            'datetimey': datetime,
-            'datey': date,
-            'floaty': float,
-            'inty': int,
-            'stry': six.text_type,
-            'timey': time,
-            'nesty': {
-                'level2': six.text_type
-            }
+            "datetimey": datetime,
+            "datey": date,
+            "floaty": float,
+            "inty": int,
+            "stry": str,
+            "timey": time,
+            "nesty": {"level2": str},
         }
     )
 
@@ -140,22 +138,34 @@ class DynamicModel(Model):
     def check(cls, **kwargs):
         # Disable the checks on MySQL so that checks tests don't fail
         if not (
-            connection_is_mariadb(connection) and
-            connection.mysql_version >= (10, 0, 1)
+            connection_is_mariadb(connection) and connection.mysql_version >= (10, 0, 1)
         ):
             return []
         return super(DynamicModel, cls).check(**kwargs)
 
     def __unicode__(self):
-        return ",".join(
-            '{}:{}'.format(key, value)
-            for key, value in six.iteritems(self.attrs)
-        )
+        return ",".join("{}:{}".format(key, value) for key, value in self.attrs.items())
+
+
+class SpeclessDynamicModel(Model):
+    attrs = DynamicField()
+
+    @classmethod
+    def check(cls, **kwargs):
+        # Disable the checks on MySQL so that checks tests don't fail
+        if not (
+            connection_is_mariadb(connection) and connection.mysql_version >= (10, 0, 1)
+        ):
+            return []
+        return super(SpeclessDynamicModel, cls).check(**kwargs)
+
+    def __unicode__(self):
+        return ",".join("{}:{}".format(key, value) for key, value in self.attrs.items())
 
 
 class Author(Model):
     name = CharField(max_length=32, db_index=True)
-    tutor = ForeignKey('self', null=True, related_name='tutees')
+    tutor = ForeignKey("self", on_delete=CASCADE, null=True, related_name="tutees")
     bio = TextField()
     birthday = DateTimeField(null=True)
     deathday = DateTimeField(null=True)
@@ -166,7 +176,7 @@ class Author(Model):
 
 class Book(Model):
     title = CharField(max_length=32, db_index=True)
-    author = ForeignKey(Author, related_name='books')
+    author = ForeignKey(Author, on_delete=CASCADE, related_name="books")
 
 
 class VanillaAuthor(VanillaModel):
@@ -177,7 +187,7 @@ class VanillaAuthor(VanillaModel):
 
 
 class AuthorExtra(Model):
-    author = OneToOneField(Author, primary_key=True)
+    author = OneToOneField(Author, on_delete=CASCADE, primary_key=True)
     legs = IntegerField(default=2)
 
 
@@ -189,12 +199,12 @@ class NameAuthor(Model):
 
 
 class NameAuthorExtra(Model):
-    name = OneToOneField(NameAuthor, primary_key=True)
+    name = OneToOneField(NameAuthor, on_delete=CASCADE, primary_key=True)
 
 
 class AuthorMultiIndex(Model):
     class Meta(object):
-        index_together = ('name', 'country')
+        index_together = ("name", "country")
 
     name = CharField(max_length=32, db_index=True)
     country = CharField(max_length=32)
@@ -205,8 +215,7 @@ class AuthorMultiIndex(Model):
 
 class AuthorHugeName(Model):
     class Meta(object):
-        db_table = 'this_is_an_author_with_an_incredibly_long_table_name_' \
-                   'you_know_it'
+        db_table = "this_is_an_author_with_an_incredibly_long_table_name_" "you_know_it"
 
     name = CharField(max_length=32)
 
@@ -240,7 +249,8 @@ class AgedCustomer(Customer):
 
 class TitledAgedCustomer(AgedCustomer):
     class Meta:
-        db_table = 'titled aged customer'  # Test name quoting
+        db_table = "titled aged customer"  # Test name quoting
+
     title = CharField(max_length=16)
 
 
@@ -265,17 +275,17 @@ class NullBit1Model(Model):
 
 
 class JSONModel(Model):
-    if (
-        not connection_is_mariadb(connection._nodb_connection) and
-        connection._nodb_connection.mysql_version >= (5, 7)
-    ):
+    if not connection_is_mariadb(
+        connection._nodb_connection
+    ) and connection._nodb_connection.mysql_version >= (5, 7):
         attrs = JSONField(null=True)
 
     def __unicode__(self):
-        return six.text_type(json.dumps(self.attrs))
+        return str(json.dumps(self.attrs))
 
 
 # For cache tests
+
 
 def expensive_calculation():
     expensive_calculation.num_runs += 1
@@ -285,7 +295,4 @@ def expensive_calculation():
 class Poll(VanillaModel):
     question = CharField(max_length=200)
     answer = CharField(max_length=200)
-    pub_date = DateTimeField(
-        'date published',
-        default=expensive_calculation
-    )
+    pub_date = DateTimeField("date published", default=expensive_calculation)

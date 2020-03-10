@@ -11,7 +11,7 @@ queryable and updatable in place. This is ideal for data that varies widely, or
 very sparse columns, or just for storing API responses that you don't have time
 to turn into the relational format.
 
-Docs: `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json.html>`_.
+Docs: `MySQL <https://dev.mysql.com/doc/refman/5.7/en/json.html>`__.
 
 Django-MySQL supports the JSON data type and related functions through
 ``JSONField`` plus some
@@ -20,11 +20,11 @@ Django-MySQL supports the JSON data type and related functions through
 
 .. class:: JSONField(**kwargs)
 
-    A field for storing JSON. The Python data type may be either ``str``
-    (``unicode`` on Python 2), ``int``, ``float``, ``dict``, or ``list`` -
-    basically anything that is supported by ``json.dumps``. There is no
-    restriction between these types - this may be surprising if you expect it
-    to just store JSON objects/``dict``\s.
+    A field for storing JSON. The Python data type may be either ``str``,
+    ``int``, ``float``, ``dict``, or ``list`` - basically anything that is
+    supported by ``json.dumps``. There is no restriction between these types -
+    this may be surprising if you expect it to just store JSON
+    objects/``dict``\s.
 
     So for example, the following all work:
 
@@ -101,7 +101,7 @@ We'll use the following example model:
         name = models.CharField(max_length=200)
         attrs = JSONField()
 
-        def __str__(self):  # __unicode__ on Python 2
+        def __str__(self):
             return self.name
 
 Exact Lookups
@@ -129,7 +129,7 @@ Ordering Lookups
 ~~~~~~~~~~~~~~~~
 
 MySQL defines an ordering on JSON objects - see
-`the docs <https://dev.mysql.com/doc/refman/5.7/en/json.html#json-comparison>`_
+`the docs <https://dev.mysql.com/doc/refman/5.7/en/json.html#json-comparison>`__
 for more details. The ordering rules can make sense for some types (e.g.
 strings, arrays), however they can also be confusing if your data is of mixed
 types, so be careful. You can use the ordering by querying with Django's
@@ -206,7 +206,7 @@ of keys:
 .. code-block:: python
 
     # Find all ShopItems with both origin and certification information
-    >>> ShopItem.objects.filter(attrs_has_keys=['origin', 'certifications'])
+    >>> ShopItem.objects.filter(attrs__has_keys=['origin', 'certifications'])
     [<ShopItem: Gruyère>]
 
 To find objects with one of several keys, use the ``has_any_keys`` lookup with
@@ -215,7 +215,7 @@ a list of keys:
 .. code-block:: python
 
     # Find all ShopItems with either a smelliness or a hardness rating
-    >>> ShopItem.objects.filter(attrs_has_any_keys=['smelliness', 'hardness'])
+    >>> ShopItem.objects.filter(attrs__has_any_keys=['smelliness', 'hardness'])
     [<ShopItem: Gruyère>, <ShopItem: Feta>]
 
 Length Lookup
@@ -234,7 +234,7 @@ follows:
 * The length does not count the length of nested arrays or objects.
 
 Docs:
-`MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-attribute-functions.html#function_json-length>`_.
+`MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-attribute-functions.html#function_json-length>`__.
 
 For example:
 
@@ -250,7 +250,7 @@ For example:
 Containment Lookups
 ~~~~~~~~~~~~~~~~~~~
 
-The ``contains`` lookup is overriden on ``JSONField`` to support the MySQL
+The ``contains`` lookup is overridden on ``JSONField`` to support the MySQL
 ``JSON_CONTAINS`` function. This allows you to search, for example, JSON
 objects that contain at least a given set of key-value pairs. Additionally you
 can do the inverse with ``contained_by``, i.e. find values where the objects
@@ -275,7 +275,7 @@ The definition of containment is, as per the MySQL docs:
   with the target key.
 
 Docs:
-`MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-search-functions.html#function_json-contains>`_.
+`MySQL <https://dev.mysql.com/doc/refman/5.7/en/json-search-functions.html#function_json-contains>`__.
 
 For example:
 
@@ -295,4 +295,3 @@ For example:
         'smelliness': 5,
     })
     [<ShopItem: Feta>]
-g

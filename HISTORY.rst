@@ -6,9 +6,116 @@ History
 Pending
 -------
 
+* Prevent ``collections.abc.Sequence`` warning.
+
+3.3.0 (2019-12-10)
+------------------
+
+* Update Python support to 3.5-3.8.
+* Converted setuptools metadata to configuration file. This meant removing the
+  ``__version__`` attribute from the package. If you want to inspect the
+  installed version, use
+  ``importlib.metadata.version("django-mysql")``
+  (`docs <https://docs.python.org/3.8/library/importlib.metadata.html#distribution-versions>`__ /
+  `backport <https://pypi.org/project/importlib-metadata/>`__).
+* Fix ``GroupConcat`` to work with both ``separator`` and ``ordering`` set.
+  (`PR #596 <https://github.com/adamchainz/django-mysql/pull/596>`__).
+
+3.2.0 (2019-06-14)
+------------------
+
+* Update Python support to 3.5-3.7, as 3.4 has reached its end of life.
+
+* Always cast SQL params to tuples in ORM code.
+
+3.1.0 (2019-05-17)
+------------------
+
+* Remove authors file and documentation page. This was showing only 4 out of
+  the 17 total contributors.
+
+* Tested on Django 2.2. No changes were needed for compatibility.
+
+3.0.0.post1 (2019-03-05)
+------------------------
+
+* Remove universal wheel. Version 3.0.0 has been pulled from PyPI after being
+  up for 3 hours to fix mistaken installs on Python 2.
+
+3.0.0 (2019-03-05)
+------------------
+
+* Drop Python 2 support, only Python 3.4+ is supported now.
+
+2.5.0 (2019-03-03)
+------------------
+
+* Drop Django 1.8, 1.9, and 1.10 support. Only Django 1.11+ is supported now.
+
+2.4.1 (2018-08-18)
+------------------
+
+* Django 2.1 compatibility - no code changes were required, releasing for PyPI
+  trove classifiers and documentation.
+
+2.4.0 (2018-07-31)
+------------------
+
+* Added ``JSONArrayAppend`` database function that wraps the respective
+  JSON-modifying function from MySQL 5.7.
+
+2.3.1 (2018-07-22)
+------------------
+
+* Made ``EnumField`` escape its arguments in a ``pymysql``-friendly fashion.
+
+2.3.0 (2018-06-19)
+------------------
+
+* Started testing with MariaDB 10.3.
+
+* Changed ``GlobalStatus.wait_until_load_low()`` to increase the default number
+  of allowed running threads from 5 to 10, to account for the new default
+  threads in MariaDB 10.3.
+
+* Added ``encoder`` and ``decoder`` arguments to ``JSONField`` for customizing
+  the way JSON is encoded and decoded from the database.
+
+* Added a ``touch`` method to the ``MySQLCache`` to refresh cache keys, as
+  added in Django 2.1.
+
+* Use a temporary database connection in system checks to avoid application
+  startup stalls.
+
+2.2.2 (2018-04-24)
+------------------
+
+* Fixed some crashes from ``DynamicField`` instances without explicit ``spec``
+  definitions.
+* Fixed a crash in system checks for ``ListCharField`` and ``SetCharField``
+  instances missing ``max_length``.
+
+2.2.1 (2018-04-14)
+------------------
+
+* Fixed ``JSONField.deconstruct()`` to not break the path for subclasses.
+
+2.2.0 (2017-12-04)
+------------------
+
+* Add ``output_field`` argument to ``JSONExtract`` function.
+* Improved DB version checks for ``JSONField`` and ``DynamicField`` so you can
+  have just one connection that supports them.
+* Django 2.0 compatibility.
+
+2.1.1 (2017-10-10)
+------------------
+
+* Changed subprocess imports for compatibility with Google App Engine.
 * (Insert new release notes below this line)
 * Added the ``manage.py`` command ``change_db_charset`` that ouputs the SQL to
   change database's charset and collation.
+* Made ``MySQLCache.set_many`` return a list as per Django 2.0.
 
 2.1.0 (2017-06-11)
 ------------------

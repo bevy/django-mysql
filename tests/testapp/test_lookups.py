@@ -1,15 +1,9 @@
-# -*- coding:utf-8 -*-
-from __future__ import (
-    absolute_import, division, print_function, unicode_literals
-)
-
 from django.test import TestCase
 
-from testapp.models import Author
+from tests.testapp.models import Author
 
 
 class CaseExactTests(TestCase):
-
     def test_charfield(self):
         dickie = Author.objects.create(name="Dickens")
 
@@ -42,7 +36,6 @@ class CaseExactTests(TestCase):
 
 
 class SoundexTests(TestCase):
-
     def test_sounds_like_lookup(self):
         principles = ["principle", "principal", "princpl"]
         created = {Author.objects.create(name=name) for name in principles}
@@ -51,12 +44,12 @@ class SoundexTests(TestCase):
             sounding = Author.objects.filter(name__sounds_like=name)
             assert set(sounding) == created
 
-        sounding = Author.objects.filter(name__sounds_like='')
+        sounding = Author.objects.filter(name__sounds_like="")
         assert set(sounding) == set()
 
-        sounding = Author.objects.filter(name__sounds_like='nothing')
+        sounding = Author.objects.filter(name__sounds_like="nothing")
         assert set(sounding) == set()
 
     def test_soundex_strings(self):
-        author = Author.objects.create(name='Robert')
-        assert Author.objects.get(name__soundex='R163') == author
+        author = Author.objects.create(name="Robert")
+        assert Author.objects.get(name__soundex="R163") == author
