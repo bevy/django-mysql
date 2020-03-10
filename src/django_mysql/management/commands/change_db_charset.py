@@ -77,7 +77,7 @@ class AlterTable(object):
             self.connection.ops.quote_name(self.db_name),
             self.connection.ops.quote_name(self.table_name),
             self.sql,
-        ).encode('utf-8')
+        )
 
 
 class Comment(object):
@@ -94,7 +94,7 @@ class Comment(object):
         wrapped = '\n'.join('-- ' + line for line in lines)
         if len(lines) > 1:
             wrapped += '\n\n'
-        return wrapped.encode('utf-8')
+        return wrapped
 
 
 class Command(BaseCommand):
@@ -367,6 +367,7 @@ ORDER BY COLUMN_NAME
 
         match = self._text_column_type_regex.match(column['spec'].upper())
         if not match:
+            print(column['spec'].upper(), match)
             raise ValueError(
                 'Unknown column spec {!r} for '
                 'bad column {} in table {}'.format(
