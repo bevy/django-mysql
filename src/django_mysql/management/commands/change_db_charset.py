@@ -340,7 +340,7 @@ ORDER BY COLUMN_NAME
             'by_column': bad_indexes_by_column,
         }
 
-    _text_column_type_regex = re.compile(r"""\
+    _text_column_type_regex = re.compile(r"""
 # Start searching at the start of the definition
 ^(?:
 # TINY = 2^8, <none> = 2^16, MEDIUM = 2^24, LONG = 2^32
