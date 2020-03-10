@@ -265,7 +265,7 @@ WHERE SCHEMA_NAME = DATABASE()
         # change the correct character lengths.
         indexes = self.build_index_map_for_table(create_table)
 
-        columns = create_table['column_types'].iteritems()
+        columns = create_table['column_types'].items()
         for column_name, column_spec in columns:
             if column_name not in bad_columns:
                 continue
@@ -324,7 +324,7 @@ ORDER BY COLUMN_NAME
     def build_index_map_for_table(self, create_table):
         bad_indexes = {}
         bad_indexes_by_column = {}
-        for index_name, columns in create_table['keys'].iteritems():
+        for index_name, columns in create_table['keys'].items():
             if index_name not in bad_indexes:
                 bad_indexes[index_name] = []
 
